@@ -97,7 +97,7 @@ body {
 
 		<ul>
 			<li>familiarity with OOP, java, maven, and jee</li>
-			<li>java application server listening on localhost:8080</li>
+			<li>java application server listening on localhost:8090</li>
 		</ul>
 
 		<h3>Prerequisites</h3>
@@ -107,7 +107,7 @@ body {
 				Set it up here <a href='https://code.google.com/apis/console/'>https://code.google.com/apis/console/</a>
 			</li>
 			<li>Set up allowed Redirect URIs at Google API &rarr; API
-				Access. Input: http://localhost:8080/OAuth2v1/index.jsp</li>
+				Access. Input: http://localhost:8090/OAuth2v1/index.jsp</li>
 			<li>a positive outlook on life</li>
 		</ul>
 		
@@ -117,7 +117,7 @@ body {
 			<li>Add Client ID, and Client Secret parameters to <b>GoogleAuthHelper.java</b></li>
 			<li>Compile the project (<b>$ mvn clean install</b>)</li>
 			<li>Deploy war to application server</li>
-			<li>Browse to: <a href="http://localhost:8080/OAuth2v1/">http://localhost:8080/OAuth2v1/</a></li>
+			<li>Browse to: <a href="http://localhost:8090/OAuth2v1/">http://localhost:8090/OAuth2v1/</a></li>
 			<li>Click <b>&quot;log in with google&quot;</b> on top of this page</li>
 		</ol>
 		

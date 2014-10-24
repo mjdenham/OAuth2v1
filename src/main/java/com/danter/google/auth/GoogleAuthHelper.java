@@ -1,5 +1,10 @@
 package com.danter.google.auth;
 
+import java.io.IOException;
+import java.security.SecureRandom;
+import java.util.Arrays;
+import java.util.Collection;
+
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeRequestUrl;
@@ -11,9 +16,6 @@ import com.google.api.client.http.HttpTransport;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson.JacksonFactory;
-import java.io.IOException;
-import java.security.SecureRandom;
-import java.util.Arrays;
 
 /**
  * A helper class for Google's OAuth2 authentication API.
@@ -25,19 +27,19 @@ public final class GoogleAuthHelper {
 	/**
 	 * Please provide a value for the CLIENT_ID constant before proceeding, set this up at https://code.google.com/apis/console/
 	 */
-	private static final String CLIENT_ID = "YOUR ID HERE";
+	private static final String CLIENT_ID = "456157079238-g6bjmb3saf2g967uf7oioduhcom1c77g.apps.googleusercontent.com";
 	/**
 	 * Please provide a value for the CLIENT_SECRET constant before proceeding, set this up at https://code.google.com/apis/console/
 	 */
-	private static final String CLIENT_SECRET = "SUPER SECRET SAUCE";
+	private static final String CLIENT_SECRET = "sC021wYTUBu6n6G_P2PvOkzT";
 
 	/**
 	 * Callback URI that google will redirect to after successful authentication
 	 */
-	private static final String CALLBACK_URI = "http://localhost:8080/OAuth2v1/index.jsp";
+	private static final String CALLBACK_URI = "http://localhost:8090/OAuth2v1/index.jsp";
 	
 	// start google authentication constants
-	private static final Iterable<String> SCOPE = Arrays.asList("https://www.googleapis.com/auth/userinfo.profile;https://www.googleapis.com/auth/userinfo.email".split(";"));
+	private static final Collection<String> SCOPE = Arrays.asList("https://www.googleapis.com/auth/userinfo.profile;https://www.googleapis.com/auth/userinfo.email".split(";"));
 	private static final String USER_INFO_URL = "https://www.googleapis.com/oauth2/v1/userinfo";
 	private static final JsonFactory JSON_FACTORY = new JacksonFactory();
 	private static final HttpTransport HTTP_TRANSPORT = new NetHttpTransport();
@@ -51,8 +53,7 @@ public final class GoogleAuthHelper {
 	 * Constructor initializes the Google Authorization Code Flow with CLIENT ID, SECRET, and SCOPE 
 	 */
 	public GoogleAuthHelper() {
-		flow = new GoogleAuthorizationCodeFlow.Builder(HTTP_TRANSPORT,
-				JSON_FACTORY, CLIENT_ID, CLIENT_SECRET, SCOPE).build();
+		flow = new GoogleAuthorizationCodeFlow.Builder(HTTP_TRANSPORT, JSON_FACTORY, CLIENT_ID, CLIENT_SECRET, SCOPE).build();
 		
 		generateStateToken();
 	}
@@ -102,9 +103,5 @@ public final class GoogleAuthHelper {
 		final String jsonIdentity = request.execute().parseAsString();
 
 		return jsonIdentity;
-
 	}
-
-	
-
 }
